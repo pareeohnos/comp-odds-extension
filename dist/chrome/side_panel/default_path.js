@@ -38554,17 +38554,29 @@ const useOdds = ()=>{
     const [odds, setOdds] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({});
     const onMessage = (message)=>{
         console.log("Calculating odds", message);
-        const calculatedOdds = {
-            1: calculatOdds(1, message),
-            10: calculatOdds(10, message),
-            20: calculatOdds(20, message),
-            30: calculatOdds(30, message),
-            40: calculatOdds(40, message),
-            50: calculatOdds(50, message),
-            100: calculatOdds(100, message),
-            150: calculatOdds(150, message),
-            200: calculatOdds(200, message)
-        };
+        let steps = [
+            1
+        ];
+        for(let i = message.stepSize; i <= message.maxTickets; i += message.stepSize){
+            steps.push(i);
+        }
+        if (steps[-1] !== message.maxTickets) {
+            steps.push(message.maxTickets);
+        }
+        const calculatedOdds = steps.reduce((acc, numberOfTickets)=>Object.assign(acc, {
+                [numberOfTickets]: calculatOdds(numberOfTickets, message)
+            }), {});
+        // const calculatedOdds = {
+        //   1: calculatOdds(1, message),
+        //   10: calculatOdds(10, message),
+        //   20: calculatOdds(20, message),
+        //   30: calculatOdds(30, message),
+        //   40: calculatOdds(40, message),
+        //   50: calculatOdds(50, message),
+        //   100: calculatOdds(100, message),
+        //   150: calculatOdds(150, message),
+        //   200: calculatOdds(200, message),
+        // };
         console.log("Calculated odds", calculatedOdds);
         setOdds(calculatedOdds);
     };
@@ -45451,7 +45463,7 @@ const twMerge = /*#__PURE__*/createTailwindMerge(getDefaultConfig);
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("1bfd65437d505369343d")
+/******/ 		__webpack_require__.h = () => ("56da71bd09810655dd05")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

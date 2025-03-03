@@ -40,7 +40,8 @@
   "content_scripts": [
     {
       "matches": [
-        "https://compcitygiveaways.co.uk/*"
+        "https://compcitygiveaways.co.uk/*",
+        "https://brickprizedraws.com/products/*"
       ],
       "js": ["content/scripts.ts"]
     }

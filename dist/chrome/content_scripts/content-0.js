@@ -1677,32 +1677,183 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./content/adapters/brick-prize-draw.ts":
+/*!**********************************************!*\
+  !*** ./content/adapters/brick-prize-draw.ts ***!
+  \**********************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
+__webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/react-refresh/runtime.js */ "./node_modules/react-refresh/runtime.js");
+
+class BrickPrizeDraw {
+    canProcess() {
+        return true;
+    }
+    gatherDetails() {
+        const currentPriceEl = document.querySelector(".price__current");
+        const cost = parseFloat(currentPriceEl.textContent.replace(/£|per|entry| |\n/g, ""));
+        const totalTickets = parseInt(currentPriceEl.dataset.totalEntries);
+        const ticketsLeft = parseInt(document.querySelector("product-inventory").dataset.inventoryQuantity);
+        const maxTickets = parseInt(currentPriceEl.dataset.maxEntries);
+        // const instantWinsTable = document.querySelector("table");
+        let instantWinsLeft = 0;
+        // if (instantWinsTable) {
+        //   instantWinsLeft = Array.from(instantWinsTable.querySelectorAll("tr td.winner")).filter(el => el.textContent === "-").length;
+        // }
+        return {
+            cost,
+            totalTickets,
+            ticketsLeft,
+            instantWinsLeft,
+            maxTickets,
+            stepSize: 2
+        };
+    }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BrickPrizeDraw);
+
+
+const $ReactRefreshModuleId$ = __webpack_require__.$Refresh$.moduleId;
+const $ReactRefreshCurrentExports$ = __react_refresh_utils__.getModuleExports(
+	$ReactRefreshModuleId$
+);
+
+function $ReactRefreshModuleRuntime$(exports) {
+	if (true) {
+		let errorOverlay;
+		if (true) {
+			errorOverlay = false;
+		}
+		let testMode;
+		if (typeof __react_refresh_test__ !== 'undefined') {
+			testMode = __react_refresh_test__;
+		}
+		return __react_refresh_utils__.executeRuntime(
+			exports,
+			$ReactRefreshModuleId$,
+			module.hot,
+			errorOverlay,
+			testMode
+		);
+	}
+}
+
+if (typeof Promise !== 'undefined' && $ReactRefreshCurrentExports$ instanceof Promise) {
+	$ReactRefreshCurrentExports$.then($ReactRefreshModuleRuntime$);
+} else {
+	$ReactRefreshModuleRuntime$($ReactRefreshCurrentExports$);
+}
+
+/***/ }),
+
+/***/ "./content/adapters/comp-city.ts":
+/*!***************************************!*\
+  !*** ./content/adapters/comp-city.ts ***!
+  \***************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
+__webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/react-refresh/runtime.js */ "./node_modules/react-refresh/runtime.js");
+
+class CompCity {
+    canProcess() {
+        return document.body.classList.contains("single-product");
+    }
+    gatherDetails() {
+        var _document_querySelector, _document_querySelector1, _document_querySelector2, _document_querySelector3;
+        const cost = parseFloat((_document_querySelector = document.querySelector(".woocommerce-Price-amount > span")) === null || _document_querySelector === void 0 ? void 0 : _document_querySelector.nextSibling.textContent);
+        const totalTickets = parseInt((_document_querySelector1 = document.querySelector(".wcl-progress-meter .max")) === null || _document_querySelector1 === void 0 ? void 0 : _document_querySelector1.textContent);
+        const ticketsLeft = parseInt((_document_querySelector2 = document.querySelector(".wcl-progress-meter .sold")) === null || _document_querySelector2 === void 0 ? void 0 : _document_querySelector2.textContent.replace("Tickets available: ", ""));
+        const instantWinsTable = document.querySelector("table");
+        const maxTickets = parseInt((_document_querySelector3 = document.querySelector("input[name=quantity]")) === null || _document_querySelector3 === void 0 ? void 0 : _document_querySelector3.getAttribute("max"));
+        let instantWinsLeft = 0;
+        if (instantWinsTable) {
+            instantWinsLeft = Array.from(instantWinsTable.querySelectorAll("tr td.winner")).filter((el)=>el.textContent === "-").length;
+        }
+        return {
+            cost,
+            totalTickets,
+            ticketsLeft,
+            instantWinsLeft,
+            maxTickets,
+            stepSize: 10
+        };
+    }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CompCity);
+
+
+const $ReactRefreshModuleId$ = __webpack_require__.$Refresh$.moduleId;
+const $ReactRefreshCurrentExports$ = __react_refresh_utils__.getModuleExports(
+	$ReactRefreshModuleId$
+);
+
+function $ReactRefreshModuleRuntime$(exports) {
+	if (true) {
+		let errorOverlay;
+		if (true) {
+			errorOverlay = false;
+		}
+		let testMode;
+		if (typeof __react_refresh_test__ !== 'undefined') {
+			testMode = __react_refresh_test__;
+		}
+		return __react_refresh_utils__.executeRuntime(
+			exports,
+			$ReactRefreshModuleId$,
+			module.hot,
+			errorOverlay,
+			testMode
+		);
+	}
+}
+
+if (typeof Promise !== 'undefined' && $ReactRefreshCurrentExports$ instanceof Promise) {
+	$ReactRefreshCurrentExports$.then($ReactRefreshModuleRuntime$);
+} else {
+	$ReactRefreshModuleRuntime$($ReactRefreshCurrentExports$);
+}
+
+/***/ }),
+
 /***/ "./content/scripts.ts":
 /*!****************************!*\
   !*** ./content/scripts.ts ***!
   \****************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _adapters_comp_city__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./adapters/comp-city */ "./content/adapters/comp-city.ts");
+/* harmony import */ var _adapters_brick_prize_draw__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./adapters/brick-prize-draw */ "./content/adapters/brick-prize-draw.ts");
 /* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
 __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/react-refresh/runtime.js */ "./node_modules/react-refresh/runtime.js");
 
-if (document.body.classList.contains("single-product")) {
-    var _document_querySelector, _document_querySelector1, _document_querySelector2;
-    console.log("Calculating odds");
-    const cost = parseFloat((_document_querySelector = document.querySelector(".woocommerce-Price-amount > span")) === null || _document_querySelector === void 0 ? void 0 : _document_querySelector.nextSibling.textContent);
-    const totalTickets = parseInt((_document_querySelector1 = document.querySelector(".wcl-progress-meter .max")) === null || _document_querySelector1 === void 0 ? void 0 : _document_querySelector1.textContent);
-    const ticketsLeft = parseInt((_document_querySelector2 = document.querySelector(".wcl-progress-meter .sold")) === null || _document_querySelector2 === void 0 ? void 0 : _document_querySelector2.textContent.replace("Tickets available: ", ""));
-    const instantWinsTable = document.querySelector("table");
-    let instantWinsLeft = 0;
-    if (instantWinsTable) {
-        instantWinsLeft = Array.from(instantWinsTable.querySelectorAll("tr td.winner")).filter((el)=>el.textContent === "-").length;
-    }
-    chrome.runtime.sendMessage({
-        cost,
-        totalTickets,
-        ticketsLeft,
-        instantWinsLeft
-    });
+
+
+const path = window.location.href;
+let adapter;
+console.log(path);
+if (path.match(/compcitygiveaways/)) {
+    adapter = new _adapters_comp_city__WEBPACK_IMPORTED_MODULE_0__["default"]();
+} else if (path.match(/brickprizedraws.com/)) {
+    adapter = new _adapters_brick_prize_draw__WEBPACK_IMPORTED_MODULE_1__["default"]();
+}
+console.log(adapter);
+if (adapter === null || adapter === void 0 ? void 0 : adapter.canProcess()) {
+    const details = adapter.gatherDetails();
+    chrome.runtime.sendMessage(details);
 }
 
 
@@ -5894,7 +6045,7 @@ module.exports = parent;
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("1bfd65437d505369343d")
+/******/ 		__webpack_require__.h = () => ("56da71bd09810655dd05")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

@@ -5,6 +5,8 @@ interface OddsMessage {
   totalTickets: number;
   ticketsLeft: number;
   instantWinsLeft: number;
+  maxTickets: number;
+  stepSize: number;
 }
 
 export interface Odd {
@@ -42,17 +44,30 @@ const useOdds = () => {
   const onMessage = (message: OddsMessage) => {
     console.log("Calculating odds", message);
 
-    const calculatedOdds = {
-      1: calculatOdds(1, message),
-      10: calculatOdds(10, message),
-      20: calculatOdds(20, message),
-      30: calculatOdds(30, message),
-      40: calculatOdds(40, message),
-      50: calculatOdds(50, message),
-      100: calculatOdds(100, message),
-      150: calculatOdds(150, message),
-      200: calculatOdds(200, message),
-    };
+    let steps = [1];
+    for (let i = message.stepSize; i <= message.maxTickets; i += message.stepSize) {
+      steps.push(i);
+    }
+
+    if (steps[-1] !== message.maxTickets) {
+      steps.push(message.maxTickets);
+    }
+
+    const calculatedOdds = steps.reduce(
+      (acc, numberOfTickets) => Object.assign(acc, { [numberOfTickets]: calculatOdds(numberOfTickets, message)}),
+      {} as Odds
+    );
+    // const calculatedOdds = {
+    //   1: calculatOdds(1, message),
+    //   10: calculatOdds(10, message),
+    //   20: calculatOdds(20, message),
+    //   30: calculatOdds(30, message),
+    //   40: calculatOdds(40, message),
+    //   50: calculatOdds(50, message),
+    //   100: calculatOdds(100, message),
+    //   150: calculatOdds(150, message),
+    //   200: calculatOdds(200, message),
+    // };
 
     console.log("Calculated odds", calculatedOdds);
 

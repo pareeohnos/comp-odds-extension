@@ -1,19 +1,28 @@
-if (document.body.classList.contains("single-product")) {
-  console.log("Calculating odds");
-  const cost = parseFloat(document.querySelector(".woocommerce-Price-amount > span")?.nextSibling!.textContent!);
-  const totalTickets = parseInt(document.querySelector(".wcl-progress-meter .max")?.textContent!);
-  const ticketsLeft = parseInt(document.querySelector(".wcl-progress-meter .sold")?.textContent!.replace("Tickets available: ", "")!);
-  const instantWinsTable = document.querySelector("table");
-  let instantWinsLeft = 0;
+import CompCity from "./adapters/comp-city";
+import BrickPrizeDraw from "./adapters/brick-prize-draw";
 
-  if (instantWinsTable) {
-    instantWinsLeft = Array.from(instantWinsTable.querySelectorAll("tr td.winner")).filter(el => el.textContent === "-").length;
-  }
+export interface TicketDetails {
+  cost: number;
+  totalTickets: number;
+  ticketsLeft: number;
+  instantWinsLeft: number;
+  maxTickets: number;
+  stepSize: number;
+}
 
-  chrome.runtime.sendMessage({ 
-    cost,
-    totalTickets,
-    ticketsLeft,
-    instantWinsLeft
-  });
+const path = window.location.href;
+let adapter;
+
+console.log(path);
+if (path.match(/compcitygiveaways/)) {
+  adapter = new CompCity();
+} else if (path.match(/brickprizedraws.com/)) {
+  adapter = new BrickPrizeDraw();
+}
+
+console.log(adapter);
+
+if (adapter?.canProcess()) {
+  const details = adapter.gatherDetails();
+  chrome.runtime.sendMessage(details);
 }
