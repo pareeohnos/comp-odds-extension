@@ -41,7 +41,9 @@
     {
       "matches": [
         "https://compcitygiveaways.co.uk/*",
-        "https://brickprizedraws.com/products/*"
+        "https://brickprizedraws.com/products/*",
+        "https://*.paragoncompetitions.co.uk/competitions/active/*"
+
       ],
       "js": ["content/scripts.ts"]
     }

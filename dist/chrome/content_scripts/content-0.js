@@ -1827,6 +1827,81 @@ if (typeof Promise !== 'undefined' && $ReactRefreshCurrentExports$ instanceof Pr
 
 /***/ }),
 
+/***/ "./content/adapters/paragon-competitions.ts":
+/*!**************************************************!*\
+  !*** ./content/adapters/paragon-competitions.ts ***!
+  \**************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
+__webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/react-refresh/runtime.js */ "./node_modules/react-refresh/runtime.js");
+
+class ParagonCompetitions {
+    canProcess() {
+        return true;
+    }
+    gatherDetails() {
+        var _document_querySelector, _document_querySelector1, _document_querySelector2;
+        const cost = parseFloat(document.querySelector(".cart .atct-price").dataset.price);
+        const totalTickets = parseInt((_document_querySelector = document.querySelector(".wcl-progress-meter .max")) === null || _document_querySelector === void 0 ? void 0 : _document_querySelector.textContent);
+        const ticketsLeft = parseInt((_document_querySelector1 = document.querySelector(".wcl-progress-meter .sold")) === null || _document_querySelector1 === void 0 ? void 0 : _document_querySelector1.textContent.replace("Tickets Left:  ", ""));
+        const instantWinsTable = document.querySelector("table.instant-win-shortcode-table");
+        const maxTickets = parseInt((_document_querySelector2 = document.querySelector("input[name=quantity]")) === null || _document_querySelector2 === void 0 ? void 0 : _document_querySelector2.getAttribute("max"));
+        let instantWinsLeft = 0;
+        if (instantWinsTable) {
+            instantWinsLeft = Array.from(instantWinsTable.querySelectorAll("tr td.instant-win-ticket-winner")).filter((el)=>el.textContent === "").length;
+        }
+        return {
+            cost,
+            totalTickets,
+            ticketsLeft,
+            instantWinsLeft,
+            maxTickets,
+            stepSize: 10
+        };
+    }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ParagonCompetitions);
+
+
+const $ReactRefreshModuleId$ = __webpack_require__.$Refresh$.moduleId;
+const $ReactRefreshCurrentExports$ = __react_refresh_utils__.getModuleExports(
+	$ReactRefreshModuleId$
+);
+
+function $ReactRefreshModuleRuntime$(exports) {
+	if (true) {
+		let errorOverlay;
+		if (true) {
+			errorOverlay = false;
+		}
+		let testMode;
+		if (typeof __react_refresh_test__ !== 'undefined') {
+			testMode = __react_refresh_test__;
+		}
+		return __react_refresh_utils__.executeRuntime(
+			exports,
+			$ReactRefreshModuleId$,
+			module.hot,
+			errorOverlay,
+			testMode
+		);
+	}
+}
+
+if (typeof Promise !== 'undefined' && $ReactRefreshCurrentExports$ instanceof Promise) {
+	$ReactRefreshCurrentExports$.then($ReactRefreshModuleRuntime$);
+} else {
+	$ReactRefreshModuleRuntime$($ReactRefreshCurrentExports$);
+}
+
+/***/ }),
+
 /***/ "./content/scripts.ts":
 /*!****************************!*\
   !*** ./content/scripts.ts ***!
@@ -1837,8 +1912,10 @@ if (typeof Promise !== 'undefined' && $ReactRefreshCurrentExports$ instanceof Pr
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _adapters_comp_city__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./adapters/comp-city */ "./content/adapters/comp-city.ts");
 /* harmony import */ var _adapters_brick_prize_draw__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./adapters/brick-prize-draw */ "./content/adapters/brick-prize-draw.ts");
+/* harmony import */ var _adapters_paragon_competitions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./adapters/paragon-competitions */ "./content/adapters/paragon-competitions.ts");
 /* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
 __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/react-refresh/runtime.js */ "./node_modules/react-refresh/runtime.js");
+
 
 
 
@@ -1849,6 +1926,8 @@ if (path.match(/compcitygiveaways/)) {
     adapter = new _adapters_comp_city__WEBPACK_IMPORTED_MODULE_0__["default"]();
 } else if (path.match(/brickprizedraws.com/)) {
     adapter = new _adapters_brick_prize_draw__WEBPACK_IMPORTED_MODULE_1__["default"]();
+} else if (path.match(/paragon/)) {
+    adapter = new _adapters_paragon_competitions__WEBPACK_IMPORTED_MODULE_2__["default"]();
 }
 console.log(adapter);
 if (adapter === null || adapter === void 0 ? void 0 : adapter.canProcess()) {
@@ -6045,7 +6124,7 @@ module.exports = parent;
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("56da71bd09810655dd05")
+/******/ 		__webpack_require__.h = () => ("4cbf30b8759f4acc31dd")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

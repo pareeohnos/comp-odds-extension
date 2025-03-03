@@ -13,7 +13,8 @@
     {
       "matches": [
         "https://compcitygiveaways.co.uk/*",
-        "https://brickprizedraws.com/products/*"
+        "https://brickprizedraws.com/products/*",
+        "https://*.paragoncompetitions.co.uk/competitions/active/*"
       ],
       "js": [
         "content_scripts/content-0.js"

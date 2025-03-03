@@ -1,5 +1,6 @@
 import CompCity from "./adapters/comp-city";
 import BrickPrizeDraw from "./adapters/brick-prize-draw";
+import ParagonCompetitions from "./adapters/paragon-competitions";
 
 export interface TicketDetails {
   cost: number;
@@ -18,6 +19,8 @@ if (path.match(/compcitygiveaways/)) {
   adapter = new CompCity();
 } else if (path.match(/brickprizedraws.com/)) {
   adapter = new BrickPrizeDraw();
+} else if (path.match(/paragon/)) {
+  adapter = new ParagonCompetitions();
 }
 
 console.log(adapter);
