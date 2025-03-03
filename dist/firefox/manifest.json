@@ -1,0 +1,42 @@
+{
+  "version": "0.0.1",
+  "name": "CompOdds",
+  "author": "Adrian Hooper",
+  "description": "Quickly calculate the odds on competition sites.",
+  "icons": {
+    "48": "icons/extension_48.png"
+  },
+  "background": {
+    "scripts": [
+      "background/scripts.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://compcitygiveaways.co.uk/*"
+      ],
+      "js": [
+        "content_scripts/content-0.js"
+      ],
+      "css": []
+    }
+  ],
+  "manifest_version": 2,
+  "browser_action": {
+    "default_icon": {
+      "48": "icons/extension_48.png"
+    },
+    "default_title": "Open Side Panel"
+  },
+  "sidebar_action": {
+    "default_panel": "sidebar_action/default_panel.html",
+    "default_title": "Side Panel Content"
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval' blob: filesystem:; object-src 'self' blob: filesystem:; ",
+  "web_accessible_resources": [
+    "/*.json",
+    "/*.js",
+    "/*.css"
+  ]
+}

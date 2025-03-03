@@ -1,0 +1,16 @@
+{
+  "version": "0.0.1",
+  "name": "vine-reviews",
+  "author": "Your Name",
+  "description": "An Extension.js example.",
+  "icons": {
+    "48": "icons/extension_48.png"
+  },
+  "background": {},
+  "content_security_policy": "script-src 'self' 'unsafe-eval' blob: filesystem:; object-src 'self' blob: filesystem:; ",
+  "web_accessible_resources": [
+    "/*.json",
+    "/*.js",
+    "/*.css"
+  ]
+}
