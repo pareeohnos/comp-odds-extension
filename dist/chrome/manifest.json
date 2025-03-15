@@ -33,22 +33,6 @@
     "default_path": "side_panel/default_path.html"
   },
   "permissions": [
-    "scripting",
     "sidePanel"
-  ],
-  "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self';"
-  },
-  "web_accessible_resources": [
-    {
-      "resources": [
-        "/*.json",
-        "/*.js",
-        "/*.css"
-      ],
-      "matches": [
-        "<all_urls>"
-      ]
-    }
   ]
 }

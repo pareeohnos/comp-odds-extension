@@ -22,8 +22,8 @@ interface Odds {
 
 const calculatOdds = (numberOfTickets: number, message: OddsMessage): Odd => {
   const totalCost = message.cost * numberOfTickets;
-  const chanceOfWinning = (numberOfTickets / (message.totalTickets)) * 100.0;
-  const currentChanceOfWinning = (numberOfTickets / (message.totalTickets - message.ticketsLeft)) * 100.0;
+  const chanceOfWinning = (numberOfTickets / (message.totalTickets + numberOfTickets)) * 100.0;
+  const currentChanceOfWinning = (numberOfTickets / (message.totalTickets + numberOfTickets - message.ticketsLeft)) * 100.0;
   let chanceOfInstantWin = 0;
   
   if (message.instantWinsLeft > 0) {
