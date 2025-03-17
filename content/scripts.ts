@@ -1,6 +1,8 @@
 import CompCity from "./adapters/comp-city";
 import BrickPrizeDraw from "./adapters/brick-prize-draw";
 import ParagonCompetitions from "./adapters/paragon-competitions";
+import GamingGiveaways from "./adapters/gaming-giveaways";
+import WinWink from "./adapters/winwink";
 
 export interface TicketDetails {
   cost: number;
@@ -21,6 +23,10 @@ if (path.match(/compcitygiveaways/)) {
   adapter = new BrickPrizeDraw();
 } else if (path.match(/paragon/)) {
   adapter = new ParagonCompetitions();
+} else if (path.match(/gaminggiveaways/)) {
+  adapter = new GamingGiveaways();
+} else if (path.match(/winwink/)) {
+  adapter = new WinWink();
 }
 
 console.log(adapter);
